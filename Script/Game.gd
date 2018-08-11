@@ -1,10 +1,13 @@
 extends Node
 
+var maxHumans=20
 var humans=10
 
 var pressA=false
 var pressQ=false
 var trappe=0
+
+var score=0
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -15,15 +18,35 @@ func _ready():
 func onTimer_timeout():
 	match trappe:
 		1:
-			if $Planete.haveHumans():
+			if humans<maxHumans and $Planete.haveHumans():
 				$Planete.takeHumans(1)
 				humans+=1
 		2:
-			if humans>0:
+			if humans>0 and !$Planete.isFullHumans():
 				humans-=1
 				$Planete.addHumans(1)
+				if humans==0:
+					$Label5.text="Win"
 
 	$Label4.text=str(humans)
+
+func onCargo_teleported():
+	if $Planete.haveHumans():
+		var ratio=$Planete.getRatioHumans()
+		print(ratio)
+
+		if ratio==0.5:
+			score+=4
+		elif ratio>0.45 and ratio<0.55:
+			score+=3
+		elif ratio>0.75 or ratio<0.25:
+			score+=1
+		else:
+			score+=2
+
+		$Label6.text=str(score)
+
+	$Planete.reset()
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
@@ -35,7 +58,7 @@ func _process(delta):
 		$Timer.start()
 
 		$Label.text="1"
-		$Label3.text="Aspire"
+		$Label3.text="Vacuum"
 
 	if Input.is_action_just_released("Key_A"):
 		pressA=false

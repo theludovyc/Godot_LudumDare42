@@ -33,9 +33,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 22.0
+margin_top = 15.0
 margin_right = 40.0
-margin_bottom = 36.0
+margin_bottom = 29.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -87,21 +87,68 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Timer" type="Timer" parent="." index="4"]
+[node name="Label5" type="Label" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 77.0
+margin_right = 117.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label6" type="Label" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 77.0
+margin_top = 20.0
+margin_right = 117.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "000"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Timer" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Cargo" parent="." index="5" instance=ExtResource( 2 )]
+[node name="Cargo" parent="." index="7" instance=ExtResource( 2 )]
 
-position = Vector2( 120.299, 60.9961 )
+position = Vector2( 100, 100 )
+_sections_unfolded = [ "Transform" ]
+startPos = 100
+endPos = 300
 
-[node name="Planete" parent="." index="6" instance=ExtResource( 3 )]
+[node name="Planete" parent="." index="8" instance=ExtResource( 3 )]
 
-position = Vector2( 168.859, 191.439 )
+position = Vector2( 200, 200 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
+
+[connection signal="teleported" from="Cargo" to="." method="onCargo_teleported"]
 
 
