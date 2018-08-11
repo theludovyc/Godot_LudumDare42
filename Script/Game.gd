@@ -1,6 +1,6 @@
 extends Node
 
-var humans=0
+var humans=10
 
 var pressA=false
 var pressQ=false
@@ -9,19 +9,26 @@ var trappe=0
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	$Label4.text=str(humans)
 	pass
 
 func onTimer_timeout():
 	match trappe:
 		1:
-			humans+=1
+			if $Planete.haveHumans():
+				$Planete.takeHumans(1)
+				humans+=1
 		2:
 			if humans>0:
 				humans-=1
+				$Planete.addHumans(1)
 
 	$Label4.text=str(humans)
 
 func _process(delta):
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 	if Input.is_action_just_pressed("Key_A"):
 		pressA=true
 		trappe=1

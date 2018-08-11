@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Script/Game.gd" type="Script" id=1]
+[ext_resource path="res://Prefab/Cargo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefab/Planete.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node" index="0"]
 
@@ -88,9 +90,17 @@ max_lines_visible = -1
 [node name="Timer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 0.5
+wait_time = 0.25
 one_shot = false
 autostart = false
+
+[node name="Cargo" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 120.299, 60.9961 )
+
+[node name="Planete" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 168.859, 191.439 )
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 
