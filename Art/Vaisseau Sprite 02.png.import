@@ -1,0 +1,32 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Vaisseau Sprite 02.png-340b7ccfdf525512f516788c358073dd.stex"
+
+[deps]
+
+source_file="res://Art/Vaisseau Sprite 02.png"
+source_md5="860a1eaeea342d642360c636cec37a24"
+
+dest_files=[ "res://.import/Vaisseau Sprite 02.png-340b7ccfdf525512f516788c358073dd.stex" ]
+dest_md5="d520a9474937d474b2cc15c304233085"
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

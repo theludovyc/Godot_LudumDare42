@@ -9,6 +9,8 @@ var trappe=0
 
 var score=0
 
+var state=0
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
@@ -16,24 +18,24 @@ func _ready():
 	pass
 
 func onTimer_timeout():
-	match trappe:
-		1:
-			if humans<maxHumans and $Planete.haveHumans():
-				$Planete.takeHumans(1)
-				humans+=1
-		2:
-			if humans>0 and !$Planete.isFullHumans():
-				humans-=1
-				$Planete.addHumans(1)
-				if humans==0:
-					$Label5.text="Win"
+	if $Cargo.canVacuum():
+		match trappe:
+			1:
+				if humans<maxHumans and $Planete.haveHumans():
+					$Planete.takeHumans(1)
+					humans+=1
+			2:
+				if humans>0 and !$Planete.isFullHumans():
+					humans-=1
+					$Planete.addHumans(1)
+					if humans==0:
+						$Label5.text="Win"
 
-	$Label4.text=str(humans)
+		$Label4.text=str(humans)
 
 func onCargo_teleported():
 	if $Planete.haveHumans():
 		var ratio=$Planete.getRatioHumans()
-		print(ratio)
 
 		if ratio==0.5:
 			score+=4
@@ -55,6 +57,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Key_A"):
 		pressA=true
 		trappe=1
+		$Cargo.setHalo0(true)
 		$Timer.start()
 
 		$Label.text="1"
@@ -66,18 +69,21 @@ func _process(delta):
 
 		if !pressQ:
 			trappe=0
-			$Label3.text="Ne fait rien"
+			$Cargo.setHalo0(false)
+			$Label3.text="Do nothing"
 		else:
 			trappe=2
-			$Label3.text="Expulse"
+			$Cargo.setHalo0(true)
+			$Label3.text="Deport"
 
 	if Input.is_action_just_pressed("Key_Q"):
 		pressQ=true
 		trappe=2
+		$Cargo.setHalo0(true)
 		$Timer.start()
 
 		$Label2.text="1"
-		$Label3.text="Expulse"
+		$Label3.text="Deport"
 
 	if Input.is_action_just_released("Key_Q"):
 		pressQ=false
@@ -85,8 +91,10 @@ func _process(delta):
 
 		if !pressA:
 			trappe=0
-			$Label3.text="Ne fait rien"
+			$Cargo.setHalo0(false)
+			$Label3.text="Do nothing"
 		else:
 			trappe=1
-			$Label3.text="Aspire"
+			$Cargo.setHalo0(true)
+			$Label3.text="Vacuum"
 	pass
