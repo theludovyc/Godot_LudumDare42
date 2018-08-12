@@ -24,37 +24,58 @@ func _ready():
 
 func onTimer_timeout():
 	if $Cargo.canVacuum():
+		$Cargo.setHalo0(true)
+
 		match trappe:
 			1:
-				if humans<maxHumans and $Planete.haveHumans():
+				if $Planete.haveHumans():
 					$Planete.takeHumans(1)
-					humans+=1
+					if humans==maxHumans:
+						$Cargo.setHalo0Red()
+						score-=1
+						$Label6.text=str(score)
+					else:
+						$Cargo.setHalo0Yellow()
+						humans+=1
 			2:
-				if humans>0 and !$Planete.isFullHumans():
-					humans-=1
-					$Planete.addHumans(1)
-					if humans==0:
-						$Label5.text="Win"
+				humans-=1
+				if humans==0:
+					global.score=score
+					get_tree().change_scene("res://Scene/Win.tscn")
 
-		if trappe>0:
-			$Label4.text=str(humans)
-			resetCargoBarr0()
-			$Beep.play()
+				if $Planete.isFullHumans():
+					$Cargo.setHalo0Red()
+					score-=1
+					$Label6.text=str(score)
+				else:
+					$Cargo.setHalo0White()
+					$Planete.addHumans(1)
+
+		$Label4.text=str(humans)
+		resetCargoBarr0()
+		#$Beep.play()
+	else:
+		$Cargo.setHalo0(false)
 
 func onCargo_teleported():
 	if $Planete.haveHumans():
 		var ratio=$Planete.getRatioHumans()
 
-		if ratio==0.5:
-			score+=4
-		elif ratio>0.45 and ratio<0.55:
-			score+=3
-		elif ratio>0.75 or ratio<0.25:
-			score+=1
-		else:
-			score+=2
+		if ratio<1:
+			if ratio==0.5:
+				score+=6
+			elif ratio>=0.4 and ratio<=0.6:
+				score+=5
+			elif ratio>=0.3 and ratio<=0.7:
+				score+=4
+			elif ratio>=0.2 and ratio<=0.8:
+				score+=3
+			elif ratio>=0.1 and ratio<=0.9:
+				score+=2
+			else:
+				score+=1
 
-		$Label6.text=str(score)
+			$Label6.text=str(score)
 
 	$Planete.reset()
 
@@ -65,7 +86,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("Key_A"):
 		pressA=true
 		trappe=1
-		$Cargo.setHalo0(true)
+		
 		$Timer.start()
 
 		$Label.text="1"
@@ -78,19 +99,19 @@ func _process(delta):
 		if !pressQ:
 			trappe=0
 			$Cargo.setHalo0(false)
+			$Timer.stop()
 			$Label3.text="Do nothing"
 		else:
 			trappe=2
-			$Cargo.setHalo0(true)
 			$Label3.text="Deport"
 
 	if Input.is_action_just_pressed("Key_Q"):
 		pressQ=true
-		trappe=2
-		$Cargo.setHalo0(true)
+		$Label2.text="1"
+
 		$Timer.start()
 
-		$Label2.text="1"
+		trappe=2
 		$Label3.text="Deport"
 
 	if Input.is_action_just_released("Key_Q"):
@@ -100,9 +121,9 @@ func _process(delta):
 		if !pressA:
 			trappe=0
 			$Cargo.setHalo0(false)
+			$Timer.stop()
 			$Label3.text="Do nothing"
 		else:
 			trappe=1
-			$Cargo.setHalo0(true)
 			$Label3.text="Vacuum"
 	pass

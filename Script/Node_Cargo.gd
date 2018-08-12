@@ -12,6 +12,15 @@ func _ready():
 func setVisibility_Halo0(var b):
 	$Halo_0.visible=b
 
+func setColor_Halo0_Yellow():
+	$Halo_0.self_modulate=Color(1, 1, 0)
+
+func setColor_Halo0_Red():
+	$Halo_0.self_modulate=Color(1, 0, 0)
+
+func setColor_Halo0_White():
+	$Halo_0.self_modulate=Color(1, 1, 1)
+
 func setScale_Barre0(var v):
 	$Barre_0.scale.x=v
 

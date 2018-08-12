@@ -42,5 +42,14 @@ func _process(delta):
 func setHalo0(var b):
 	$Node_Cargo.setVisibility_Halo0(b)
 
+func setHalo0Yellow():
+	$Node_Cargo.setColor_Halo0_Yellow()
+
+func setHalo0Red():
+	$Node_Cargo.setColor_Halo0_Red()
+
+func setHalo0White():
+	$Node_Cargo.setColor_Halo0_White()
+
 func setBarre0(var v):
 	$Node_Cargo.setScale_Barre0(v)
