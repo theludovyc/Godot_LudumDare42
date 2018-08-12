@@ -12,6 +12,9 @@ func _ready():
 func setVisibility_Halo0(var b):
 	$Halo_0.visible=b
 
+func setScale_Barre0(var v):
+	$Barre_0.scale.x=v
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

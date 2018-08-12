@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Script/Cargo.gd" type="Script" id=1]
 [ext_resource path="res://Script/Node_Cargo.gd" type="Script" id=2]
 [ext_resource path="res://Art/Hallo 02.png" type="Texture" id=3]
-[ext_resource path="res://Art/Vaisseau Sprite 01.png" type="Texture" id=4]
-[ext_resource path="res://Art/Vaisseau Sprite 03.png" type="Texture" id=5]
+[ext_resource path="res://Art/Gauche.png" type="Texture" id=4]
+[ext_resource path="res://Art/Droite0.png" type="Texture" id=5]
+[ext_resource path="res://Art/vaisseau_barre.png" type="Texture" id=6]
 
 [node name="Cargo" type="Node2D"]
 
@@ -23,14 +24,14 @@ autostart = false
 
 [node name="Node_Cargo" type="Node2D" parent="." index="1"]
 
-scale = Vector2( 0.65, 0.65 )
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Halo_0" type="Sprite" parent="Node_Cargo" index="0"]
 
 visible = false
-position = Vector2( 515.618, 1798.64 )
+position = Vector2( 622.113, 1829.32 )
 texture = ExtResource( 3 )
 
 [node name="Sprite0" type="Sprite" parent="Node_Cargo" index="1"]
@@ -41,10 +42,17 @@ _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="Sprite1" type="Sprite" parent="Node_Cargo" index="2"]
 
-position = Vector2( 518, 0 )
+position = Vector2( 885, 349 )
 texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Barre_0" type="Sprite" parent="Node_Cargo" index="3"]
+
+self_modulate = Color( 1, 1, 0, 1 )
+position = Vector2( 630.52, 682.295 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 

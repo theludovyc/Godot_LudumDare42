@@ -12,6 +12,9 @@ var humans=0
 # var a = 2
 # var b = "textvar"
 
+func setBarre0():
+	$Barre_0.scale.x=(humans/float(maxHumans))
+
 func reset():
 	var rN=Helper.rand_between(0, planetes.size()-1)
 
@@ -31,14 +34,16 @@ func reset():
 		planetes_index=rN
 
 	$Sprite.texture=planetes[planetes_index]
-	humans=Helper.rand_between(0, maxHumans)
+	humans=Helper.rand_between(1, maxHumans)
 	$Label.text=str(humans)
+	setBarre0()
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	humans=Helper.rand_between(0, maxHumans)
 	$Label.text=str(humans)
+	setBarre0()
 	pass
 
 func isFullHumans():
@@ -49,6 +54,7 @@ func isFullHumans():
 func addHumans(h):
 	humans+=h
 	$Label.text=str(humans)
+	setBarre0()
 
 func getRatioHumans():
 	return humans/float(maxHumans)
@@ -61,6 +67,7 @@ func haveHumans():
 func takeHumans(h):
 	humans-=h
 	$Label.text=str(humans)
+	setBarre0()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

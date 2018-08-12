@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Ship_Reactor_Loop_01.wav-45c01d0ddcc49e0574960e1ae7de1e48.sample"
+
+[deps]
+
+source_file="res://Sound/SFX_Ship_Reactor_Loop_01.wav"
+source_md5="d52d733f2b6b3b0c7d06bfe60989618b"
+
+dest_files=[ "res://.import/SFX_Ship_Reactor_Loop_01.wav-45c01d0ddcc49e0574960e1ae7de1e48.sample" ]
+dest_md5="362daef055437680568baf338bc008e9"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SFX_Beep_01.wav-391b3f74461d9dbf5a6315fb2b202252.sample"
+
+[deps]
+
+source_file="res://Sound/SFX_Beep_01.wav"
+source_md5="2249deeb8148ba27bfa98217f78f131e"
+
+dest_files=[ "res://.import/SFX_Beep_01.wav-391b3f74461d9dbf5a6315fb2b202252.sample" ]
+dest_md5="3227ca75d3f57e7b871ea796eec6a792"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

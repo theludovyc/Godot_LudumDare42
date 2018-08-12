@@ -11,10 +11,15 @@ var score=0
 
 var state=0
 
+func resetCargoBarr0():
+	if humans>0:
+		$Cargo.setBarre0(humans/float(maxHumans))
+
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	$Label4.text=str(humans)
+	resetCargoBarr0()
 	pass
 
 func onTimer_timeout():
@@ -31,7 +36,10 @@ func onTimer_timeout():
 					if humans==0:
 						$Label5.text="Win"
 
-		$Label4.text=str(humans)
+		if trappe>0:
+			$Label4.text=str(humans)
+			resetCargoBarr0()
+			$Beep.play()
 
 func onCargo_teleported():
 	if $Planete.haveHumans():
