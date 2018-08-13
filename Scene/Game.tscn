@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Script/Game.gd" type="Script" id=1]
 [ext_resource path="res://Art/unknown.png" type="Texture" id=2]
 [ext_resource path="res://Prefab/Planete.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Prefab/Cargo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Art/8bitOperatorPlus-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Prefab/Cargo.tscn" type="PackedScene" id=5]
 
-[node name="Game" type="Node"]
+[sub_resource type="DynamicFont" id=1]
+
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -119,26 +128,29 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label6" type="Label" parent="." index="7"]
+[node name="Score" type="Label" parent="." index="7"]
 
+self_modulate = Color( 1, 0.501961, 0, 1 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 77.0
 margin_top = 20.0
-margin_right = 117.0
-margin_bottom = 34.0
+margin_right = 1600.0
+margin_bottom = 77.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "000"
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Visibility" ]
 
 [node name="Timer" type="Timer" parent="." index="8"]
 
@@ -147,13 +159,22 @@ wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Cargo" parent="." index="9" instance=ExtResource( 4 )]
+[node name="Cargo" parent="." index="9" instance=ExtResource( 5 )]
 
 position = Vector2( -40, 100 )
 endPos = 200
 
+[node name="Timer2" type="Timer" parent="." index="10"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 
 [connection signal="teleported" from="Cargo" to="." method="onCargo_teleported"]
+
+[connection signal="timeout" from="Timer2" to="." method="onTimer2_timeout"]
 
 

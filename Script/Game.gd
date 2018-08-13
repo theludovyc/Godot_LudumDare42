@@ -9,8 +9,6 @@ var trappe=0
 
 var score=0
 
-var state=0
-
 func resetCargoBarr0():
 	if humans>0:
 		$Cargo.setBarre0(humans/float(maxHumans))
@@ -32,8 +30,8 @@ func onTimer_timeout():
 					$Planete.takeHumans(1)
 					if humans==maxHumans:
 						$Cargo.setHalo0Red()
-						score-=1
-						$Label6.text=str(score)
+						score-=2
+						$Score.text=str(score)
 					else:
 						$Cargo.setHalo0Yellow()
 						humans+=1
@@ -45,8 +43,8 @@ func onTimer_timeout():
 
 				if $Planete.isFullHumans():
 					$Cargo.setHalo0Red()
-					score-=1
-					$Label6.text=str(score)
+					score-=2
+					$Score.text=str(score)
 				else:
 					$Cargo.setHalo0White()
 					$Planete.addHumans(1)
@@ -57,25 +55,29 @@ func onTimer_timeout():
 	else:
 		$Cargo.setHalo0(false)
 
+func onTimer2_timeout():
+	score+=1
+	$Score.text=str(score)
+
 func onCargo_teleported():
 	if $Planete.haveHumans():
 		var ratio=$Planete.getRatioHumans()
 
 		if ratio<1:
 			if ratio==0.5:
-				score+=6
+				score+=7
 			elif ratio>=0.4 and ratio<=0.6:
-				score+=5
+				score+=6
 			elif ratio>=0.3 and ratio<=0.7:
-				score+=4
+				score+=5
 			elif ratio>=0.2 and ratio<=0.8:
-				score+=3
+				score+=4
 			elif ratio>=0.1 and ratio<=0.9:
-				score+=2
+				score+=3
 			else:
-				score+=1
+				score+=2
 
-			$Label6.text=str(score)
+			$Score.text=str(score)
 
 	$Planete.reset()
 
