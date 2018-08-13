@@ -146,7 +146,7 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 [node name="Barre_2" type="Sprite" parent="Node_Cargo" index="13"]
 
 visible = false
-self_modulate = Color( 0.784314, 0, 1, 1 )
+self_modulate = Color( 0, 1, 0, 1 )
 position = Vector2( 1546, 682 )
 scale = Vector2( 1e-05, 1 )
 texture = ExtResource( 6 )
@@ -186,7 +186,7 @@ _sections_unfolded = [ "Region", "Transform", "Visibility" ]
 [node name="Barre_3" type="Sprite" parent="Node_Cargo" index="18"]
 
 visible = false
-self_modulate = Color( 0.784314, 0, 1, 1 )
+self_modulate = Color( 0, 1, 1, 1 )
 position = Vector2( 1952, 682 )
 scale = Vector2( 1e-05, 1 )
 texture = ExtResource( 6 )

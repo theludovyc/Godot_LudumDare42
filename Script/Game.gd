@@ -2,27 +2,13 @@ extends Node
 
 export(bool) var sound=false
 
-var maxHumans=20
-var humans=10
-
-var pressA=false
-var pressQ=false
-var trappe0=0
-
 var score=0
 
-var maxKrogans=20
-var krogans=0
+var trappes=[0, 0, 0, 0]
+var races=[10, 0, 0, 0]
+var maxRaces=[20, 20, 20, 20]
 
-var pressZ=false
-var pressS=false
-var trappe1=0
-
-var trappes=[0, 0]
-var races=[10, 0]
-var maxRaces=[20, 20]
-
-var press=[[false, false], [false, false]]
+var press=[[false, false], [false, false], [false, false], [false, false]]
 
 var timers
 
@@ -38,14 +24,21 @@ func resetCargoBarre(i):
 				$Cargo.setBarre1(races[1]/float(maxRaces[1]))
 			else:
 				$Cargo.setBarre1(0)
+		2:
+			if races[2]>0:
+				$Cargo.setBarre2(races[2]/float(maxRaces[2]))
+			else:
+				$Cargo.setBarre2(0)
+		3:
+			if races[3]>0:
+				$Cargo.setBarre3(races[3]/float(maxRaces[3]))
+			else:
+				$Cargo.setBarre3(0)
 
 func _ready():
-	timers=[$Timer, $Timer1]
-
-	# Called every time the node is added to the scene.
-	# Initialization here
-	$Label4.text=str(humans)
-	resetCargoBarre(0)
+	timers=[$Timer, $Timer1, $Timer2, $Timer3]
+	
+	$Cargo.setBarre0(races[0]/float(maxRaces[0]))
 
 	if sound:
 		$Music.play()
@@ -57,6 +50,7 @@ func checkWin():
 			return
 
 	global.score=score
+	global.level=0
 	get_tree().change_scene("res://Scene/Win.tscn")
 
 func onTimeout(i):
@@ -106,6 +100,12 @@ func onTimer_timeout():
 func onTimer1_timeout():
 	onTimeout(1)
 
+func onTimer2_timeout():
+	onTimeout(2)
+
+func onTimer3_timeout():
+	onTimeout(3)
+
 func onTimerScore_timeout():
 	score+=1
 	$Score.text=str(score)
@@ -129,10 +129,21 @@ func calcScoreRaces(i):
 				score+=2
 
 func onCargo_teleported():
-	calcScoreRaces(0)
-
-	if global.level>0:
-		calcScoreRaces(1)
+	match global.level:
+		3:
+			calcScoreRaces(0)
+			calcScoreRaces(1)
+			calcScoreRaces(2)
+			calcScoreRaces(3)
+		2:
+			calcScoreRaces(0)
+			calcScoreRaces(1)
+			calcScoreRaces(2)
+		1:
+			calcScoreRaces(0)
+			calcScoreRaces(1)
+		0:
+			calcScoreRaces(0)
 
 	$Score.text=str(score)
 	$Planete.reset()
@@ -174,8 +185,19 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-	onPress("Halo0_Vacuum", "Halo0_Deport", 0)
-
-	if global.level>0:
-		onPress("Halo1_Vacuum", "Halo1_Deport", 1)
+	match global.level:
+		3:
+			onPress("Halo0_Vacuum", "Halo0_Deport", 0)
+			onPress("Halo1_Vacuum", "Halo1_Deport", 1)
+			onPress("Halo2_Vacuum", "Halo2_Deport", 2)
+			onPress("Halo3_Vacuum", "Halo3_Deport", 3)
+		2:
+			onPress("Halo0_Vacuum", "Halo0_Deport", 0)
+			onPress("Halo1_Vacuum", "Halo1_Deport", 1)
+			onPress("Halo2_Vacuum", "Halo2_Deport", 2)
+		1:
+			onPress("Halo0_Vacuum", "Halo0_Deport", 0)
+			onPress("Halo1_Vacuum", "Halo1_Deport", 1)
+		0:
+			onPress("Halo0_Vacuum", "Halo0_Deport", 0)
 	pass

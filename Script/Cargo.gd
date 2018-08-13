@@ -10,7 +10,7 @@ export(bool) var sound=false
 
 var onTeleport=false
 
-var upgradeChance=0.8
+var upgradeChance=0.1
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -39,7 +39,7 @@ func onTimer_timeout():
 				var r=randf()
 				if r<=upgradeChance:
 					upgrade()
-					upgradeChance=0.8
+					upgradeChance=0.1
 					emit_signal("upgraded")
 				else:
 					upgradeChance+=0.1

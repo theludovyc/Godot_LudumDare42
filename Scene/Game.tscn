@@ -16,10 +16,10 @@ use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Game" type="Node" index="0"]
+[node name="Game" type="Node"]
 
 script = ExtResource( 1 )
-sound = false
+sound = true
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
@@ -32,90 +32,7 @@ _sections_unfolded = [ "Offset" ]
 position = Vector2( 0, 455 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Label" type="Label" parent="." index="2"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label2" type="Label" parent="." index="3"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 15.0
-margin_right = 40.0
-margin_bottom = 29.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label3" type="Label" parent="." index="4"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 41.0
-margin_right = 40.0
-margin_bottom = 55.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Label4" type="Label" parent="." index="5"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 64.0
-margin_right = 40.0
-margin_bottom = 78.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Score" type="Label" parent="." index="6"]
+[node name="Score" type="Label" parent="." index="2"]
 
 self_modulate = Color( 1, 0.501961, 0, 1 )
 anchor_left = 0.0
@@ -139,34 +56,48 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Visibility" ]
 
-[node name="Timer" type="Timer" parent="." index="7"]
+[node name="Timer" type="Timer" parent="." index="3"]
 
 process_mode = 1
 wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Timer1" type="Timer" parent="." index="8"]
+[node name="Timer1" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Cargo" parent="." index="9" instance=ExtResource( 5 )]
+[node name="Timer2" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = false
+autostart = false
+
+[node name="Timer3" type="Timer" parent="." index="6"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = false
+autostart = false
+
+[node name="Cargo" parent="." index="7" instance=ExtResource( 5 )]
 
 position = Vector2( -40, 100 )
 endPos = 200
 sound = true
 
-[node name="Timer_Score" type="Timer" parent="." index="10"]
+[node name="Timer_Score" type="Timer" parent="." index="8"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="Beep" type="AudioStreamPlayer" parent="." index="11"]
+[node name="Beep" type="AudioStreamPlayer" parent="." index="9"]
 
 stream = ExtResource( 6 )
 volume_db = -20.0
@@ -174,7 +105,7 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 
-[node name="Music" type="AudioStreamPlayer" parent="." index="12"]
+[node name="Music" type="AudioStreamPlayer" parent="." index="10"]
 
 stream = ExtResource( 7 )
 volume_db = 0.0
@@ -185,6 +116,10 @@ bus = "Master"
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 
 [connection signal="timeout" from="Timer1" to="." method="onTimer1_timeout"]
+
+[connection signal="timeout" from="Timer2" to="." method="onTimer2_timeout"]
+
+[connection signal="timeout" from="Timer3" to="." method="onTimer3_timeout"]
 
 [connection signal="teleported" from="Cargo" to="." method="onCargo_teleported"]
 

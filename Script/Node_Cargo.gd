@@ -94,8 +94,8 @@ func setColor_Halo_Default(i):
 			$Halo_1.self_modulate=Color(0.78, 0, 1)
 		2:
 			$Halo_2.self_modulate=Color(0, 1, 0)
-		2:
-			$Halo_2.self_modulate=Color(0, 1, 1)
+		3:
+			$Halo_3.self_modulate=Color(0, 1, 1)
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
