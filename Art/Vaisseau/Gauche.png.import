@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Droite0.png-878d37f05d99c8bae1702189a29800a6.stex"
+path="res://.import/Gauche.png-400c8fdcb01cc2eaf0bd62a3e7c34b87.stex"
 
 [deps]
 
-source_file="res://Art/Droite0.png"
-source_md5="f35b01163bfbd9826fb6609cc6fa2caf"
+source_file="res://Art/Vaisseau/Gauche.png"
+source_md5="89bd81b9414d0bf36962672a6c87eb3a"
 
-dest_files=[ "res://.import/Droite0.png-878d37f05d99c8bae1702189a29800a6.stex" ]
-dest_md5="c55c705dde41ce723dff2d44cdd2e554"
+dest_files=[ "res://.import/Gauche.png-400c8fdcb01cc2eaf0bd62a3e7c34b87.stex" ]
+dest_md5="98b9dd6b072eda401080776838104687"
 
 [params]
 

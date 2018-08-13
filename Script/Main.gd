@@ -23,5 +23,8 @@ func _process(delta):
 		v=InputMap.get_action_list("Halo0_Deport")
 		v[0].scancode=KEY_A
 
+		v=InputMap.get_action_list("Halo1_Vacuum")
+		v[0].scancode=KEY_W
+
 		get_tree().change_scene("res://Scene/Game.tscn")
 	pass

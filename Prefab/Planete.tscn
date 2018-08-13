@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Script/Planete.gd" type="Script" id=1]
-[ext_resource path="res://Art/Planete_01.png" type="Texture" id=2]
+[ext_resource path="res://Art/Planete/Planete_01.png" type="Texture" id=2]
 [ext_resource path="res://Art/vaisseau_barre.png" type="Texture" id=3]
 
 [node name="Planete" type="Node2D"]
@@ -57,7 +57,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 640, 380 )
+position = Vector2( 972, 380 )
 scale = Vector2( 1.08, 1.5 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -65,7 +65,8 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="Barre_1" type="Sprite" parent="." index="5"]
 
 visible = false
-position = Vector2( 640, 380 )
+self_modulate = Color( 0.784314, 0, 1, 1 )
+position = Vector2( 972, 380 )
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 

@@ -145,20 +145,27 @@ wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Cargo" parent="." index="8" instance=ExtResource( 5 )]
+[node name="Timer1" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 0.25
+one_shot = false
+autostart = false
+
+[node name="Cargo" parent="." index="9" instance=ExtResource( 5 )]
 
 position = Vector2( -40, 100 )
 endPos = 200
 sound = true
 
-[node name="Timer2" type="Timer" parent="." index="9"]
+[node name="Timer_Score" type="Timer" parent="." index="10"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="Beep" type="AudioStreamPlayer" parent="." index="10"]
+[node name="Beep" type="AudioStreamPlayer" parent="." index="11"]
 
 stream = ExtResource( 6 )
 volume_db = -20.0
@@ -168,8 +175,12 @@ bus = "Master"
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 
+[connection signal="timeout" from="Timer1" to="." method="onTimer1_timeout"]
+
 [connection signal="teleported" from="Cargo" to="." method="onCargo_teleported"]
 
-[connection signal="timeout" from="Timer2" to="." method="onTimer2_timeout"]
+[connection signal="upgraded" from="Cargo" to="Planete" method="onCargo_upgraded"]
+
+[connection signal="timeout" from="Timer_Score" to="." method="onTimerScore_timeout"]
 
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hallo 02.png-bbc3601143aee246f8e8545b653135f5.stex"
+path="res://.import/Planete_02.png-9970b30dce3d9d3ce5e53262f20a77c0.stex"
 
 [deps]
 
-source_file="res://Art/Hallo 02.png"
-source_md5="01a2eef92ec916239523b0e0f17baccb"
+source_file="res://Art/Planete/Planete_02.png"
+source_md5="bc2b34537d2fc1829bed1cee96b9656b"
 
-dest_files=[ "res://.import/Hallo 02.png-bbc3601143aee246f8e8545b653135f5.stex" ]
-dest_md5="79be33c38d0db7339a4b0f8536976597"
+dest_files=[ "res://.import/Planete_02.png-9970b30dce3d9d3ce5e53262f20a77c0.stex" ]
+dest_md5="55124693ba7e47a69a7d18d23fddc605"
 
 [params]
 
