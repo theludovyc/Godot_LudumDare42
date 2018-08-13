@@ -22,6 +22,10 @@ var trappes=[0, 0]
 var races=[10, 0]
 var maxRaces=[20, 20]
 
+var press=[[false, false], [false, false]]
+
+var timers
+
 func resetCargoBarre(i):
 	match i:
 		0:
@@ -36,6 +40,8 @@ func resetCargoBarre(i):
 				$Cargo.setBarre1(0)
 
 func _ready():
+	timers=[$Timer, $Timer1]
+
 	# Called every time the node is added to the scene.
 	# Initialization here
 	$Label4.text=str(humans)
@@ -65,18 +71,25 @@ func onTimeout(i):
 					else:
 						$Cargo.setHaloDefault(i)
 						races[i]+=1
-			2:
-				races[i]-=1
-				if races[i]==0:
-					checkWin()
-
-				if $Planete.isFullRaces(i):
-					$Cargo.setHaloRed(i)
-					score-=3
-					$Score.text=str(score)
 				else:
 					$Cargo.setHaloWhite(i)
-					$Planete.addRaces(i, 1)
+					return
+			2:
+				if races[i]>0:
+					races[i]-=1
+					if races[i]==0:
+						checkWin()
+					else:	
+						if $Planete.isFullRaces(i):
+							$Cargo.setHaloRed(i)
+							score-=3
+							$Score.text=str(score)
+						else:
+							$Cargo.setHaloWhite(i)
+							$Planete.addRaces(i, 1)
+				else:
+					$Cargo.setHaloWhite(i)
+					return
 
 		resetCargoBarre(i)
 		if sound:
@@ -94,9 +107,9 @@ func onTimerScore_timeout():
 	score+=1
 	$Score.text=str(score)
 
-func onCargo_teleported():
-	if $Planete.haveHumans():
-		var ratio=$Planete.getRatioHumans()
+func calcScoreRaces(i):
+	if $Planete.haveRaces(i):
+		var ratio=$Planete.getRatioRaces(i)
 
 		if ratio<1:
 			if ratio==0.5:
@@ -112,88 +125,54 @@ func onCargo_teleported():
 			else:
 				score+=2
 
-			$Score.text=str(score)
+func onCargo_teleported():
+	calcScoreRaces(0)
 
+	if global.level>0:
+		calcScoreRaces(1)
+
+	$Score.text=str(score)
 	$Planete.reset()
+
+func onPress(a, a1, i):
+	if Input.is_action_just_pressed(a):
+		press[i][0]=true
+		trappes[i]=1
+		
+		timers[i].start()
+
+	if Input.is_action_just_released(a):
+		press[i][0]=false
+
+		if !press[i][1]:
+			trappes[i]=0
+			$Cargo.setHalo(i, false)
+			timers[i].stop()
+		else:
+			trappes[i]=2
+
+	if Input.is_action_just_pressed(a1):
+		press[i][1]=true
+		trappes[i]=2
+
+		timers[i].start()
+
+	if Input.is_action_just_released(a1):
+		press[i][1]=false
+
+		if !press[i][0]:
+			trappes[i]=0
+			$Cargo.setHalo(i, false)
+			timers[i].stop()
+		else:
+			trappes[i]=1
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("Halo0_Vacuum"):
-		pressA=true
-		trappes[0]=1
-		
-		$Timer.start()
-
-		$Label.text="1"
-		$Label3.text="Vacuum"
-
-	if Input.is_action_just_released("Halo0_Vacuum"):
-		pressA=false
-		$Label.text="0"
-
-		if !pressQ:
-			trappes[0]=0
-			$Cargo.setHalo(0, false)
-			$Timer.stop()
-			$Label3.text="Do nothing"
-		else:
-			trappes[0]=2
-			$Label3.text="Deport"
-
-	if Input.is_action_just_pressed("Halo0_Deport"):
-		pressQ=true
-		trappes[0]=2
-
-		$Timer.start()
-
-		$Label2.text="1"
-		$Label3.text="Deport"
-
-	if Input.is_action_just_released("Halo0_Deport"):
-		pressQ=false
-		$Label2.text="0"
-
-		if !pressA:
-			trappes[0]=0
-			$Cargo.setHalo(0, false)
-			$Timer.stop()
-			$Label3.text="Do nothing"
-		else:
-			trappes[0]=1
-			$Label3.text="Vacuum"
+	onPress("Halo0_Vacuum", "Halo0_Deport", 0)
 
 	if global.level>0:
-		if Input.is_action_just_pressed("Halo1_Vacuum"):
-			pressZ=true
-			trappes[1]=1
-			
-			$Timer1.start()
-
-		if Input.is_action_just_released("Halo1_Vacuum"):
-			pressZ=false
-
-			if !pressS:
-				trappes[1]=0
-				$Cargo.setHalo(1, false)
-				$Timer1.stop()
-			else:
-				trappes[1]=2
-
-		if Input.is_action_just_pressed("Halo1_Deport"):
-			pressS=true
-			trappes[1]=2
-
-			$Timer.start()
-
-		if Input.is_action_just_released("Halo1_Deport"):
-			pressS=false
-
-			if !pressZ:
-				trappes[1]=0
-				$Cargo.setHalo(1, false)
-				$Timer.stop()
-			else:
-				trappes[1]=1
+		onPress("Halo1_Vacuum", "Halo1_Deport", 1)
 	pass

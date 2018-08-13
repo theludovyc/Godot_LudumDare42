@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Script/Game.gd" type="Script" id=1]
 [ext_resource path="res://Art/unknown.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Art/8bitOperatorPlus-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Prefab/Cargo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sound/SFX_Beep_01.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound/M_Colonie_Loop_01.ogg" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -170,6 +171,14 @@ autostart = true
 stream = ExtResource( 6 )
 volume_db = -20.0
 autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Music" type="AudioStreamPlayer" parent="." index="12"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = true
 mix_target = 0
 bus = "Master"
 

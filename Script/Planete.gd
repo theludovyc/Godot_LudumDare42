@@ -29,7 +29,7 @@ func setBarre0():
 	$Barre_0.scale.x=(races[0]/float(maxRaces[0]))
 
 func setBarre1():
-	$Barre_1.scale.x=(krogans/float(maxKrogans))
+	$Barre_1.scale.x=(races[1]/float(maxRaces[1]))
 
 func reset():
 	var rN=Helper.rand_between(0, planetes.size()-1)
@@ -55,7 +55,7 @@ func reset():
 	setBarre0()
 
 	if global.level>0:
-		krogans=Helper.rand_between(1, maxKrogans)
+		races[1]=Helper.rand_between(1, maxRaces[1])
 		setBarre1()
 
 func _ready():

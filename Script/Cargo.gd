@@ -35,7 +35,7 @@ func onTimer_timeout():
 			modulate.a-=0.1
 			$Audio.volume_db-=2
 		else:
-			if global.level<4:
+			if global.level<2:
 				var r=randf()
 				if r<=upgradeChance:
 					upgrade()

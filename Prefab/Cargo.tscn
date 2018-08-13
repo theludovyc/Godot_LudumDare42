@@ -104,6 +104,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 visible = false
 self_modulate = Color( 0.784314, 0, 1, 1 )
 position = Vector2( 1130.52, 682.295 )
+scale = Vector2( 1e-05, 1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 

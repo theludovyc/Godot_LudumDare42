@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/M_Colonie_Loop_01.ogg-8887fa0d92a547adc81acf131efbeb8d.oggstr"
+
+[deps]
+
+source_file="res://Sound/M_Colonie_Loop_01.ogg"
+source_md5="2b1c8eb0c6e3d2142e2b56159f59a96d"
+
+dest_files=[ "res://.import/M_Colonie_Loop_01.ogg-8887fa0d92a547adc81acf131efbeb8d.oggstr" ]
+dest_md5="b4a2c48851b2d9349e377aa723bd61c5"
+
+[params]
+
+loop=true
+loop_offset=0
