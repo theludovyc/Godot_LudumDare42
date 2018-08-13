@@ -1,5 +1,7 @@
 extends Node
 
+export(bool) var sound=false
+
 var maxHumans=20
 var humans=10
 
@@ -30,7 +32,7 @@ func onTimer_timeout():
 					$Planete.takeHumans(1)
 					if humans==maxHumans:
 						$Cargo.setHalo0Red()
-						score-=2
+						score-=3
 						$Score.text=str(score)
 					else:
 						$Cargo.setHalo0Yellow()
@@ -43,7 +45,7 @@ func onTimer_timeout():
 
 				if $Planete.isFullHumans():
 					$Cargo.setHalo0Red()
-					score-=2
+					score-=3
 					$Score.text=str(score)
 				else:
 					$Cargo.setHalo0White()
@@ -51,7 +53,8 @@ func onTimer_timeout():
 
 		$Label4.text=str(humans)
 		resetCargoBarr0()
-		#$Beep.play()
+		if sound:
+			$Beep.play()
 	else:
 		$Cargo.setHalo0(false)
 
@@ -85,7 +88,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("Key_A"):
+	if Input.is_action_just_pressed("Halo0_Vacuum"):
 		pressA=true
 		trappe=1
 		
@@ -94,7 +97,7 @@ func _process(delta):
 		$Label.text="1"
 		$Label3.text="Vacuum"
 
-	if Input.is_action_just_released("Key_A"):
+	if Input.is_action_just_released("Halo0_Vacuum"):
 		pressA=false
 		$Label.text="0"
 
@@ -107,16 +110,16 @@ func _process(delta):
 			trappe=2
 			$Label3.text="Deport"
 
-	if Input.is_action_just_pressed("Key_Q"):
+	if Input.is_action_just_pressed("Halo0_Deport"):
 		pressQ=true
-		$Label2.text="1"
+		trappe=2
 
 		$Timer.start()
 
-		trappe=2
+		$Label2.text="1"
 		$Label3.text="Deport"
 
-	if Input.is_action_just_released("Key_Q"):
+	if Input.is_action_just_released("Halo0_Deport"):
 		pressQ=false
 		$Label2.text="0"
 

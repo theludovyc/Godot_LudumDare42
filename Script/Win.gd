@@ -13,15 +13,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("Halo0_Vacuum"):
-		get_tree().change_scene("res://Scene/Game.tscn")
-
-	if Input.is_action_just_pressed("Halo0_Deport"):
-		var v=InputMap.get_action_list("Halo0_Vacuum")
-		v[0].scancode=KEY_Q
-
-		v=InputMap.get_action_list("Halo0_Deport")
-		v[0].scancode=KEY_A
-
+	if Input.is_action_just_pressed("Halo0_Vacuum") or Input.is_action_just_pressed("Halo0_Deport"):
 		get_tree().change_scene("res://Scene/Game.tscn")
 	pass

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/Cargo.gd" type="Script" id=1]
-[ext_resource path="res://Script/Node_Cargo.gd" type="Script" id=2]
-[ext_resource path="res://Art/Hallo 02.png" type="Texture" id=3]
-[ext_resource path="res://Art/Gauche.png" type="Texture" id=4]
-[ext_resource path="res://Art/Droite0.png" type="Texture" id=5]
-[ext_resource path="res://Art/vaisseau_barre.png" type="Texture" id=6]
+[ext_resource path="res://Sound/SFX_Ship_Reactor_Loop_01.wav" type="AudioStream" id=2]
+[ext_resource path="res://Script/Node_Cargo.gd" type="Script" id=3]
+[ext_resource path="res://Art/Hallo 02.png" type="Texture" id=4]
+[ext_resource path="res://Art/Gauche.png" type="Texture" id=5]
+[ext_resource path="res://Art/Droite0.png" type="Texture" id=6]
+[ext_resource path="res://Art/vaisseau_barre.png" type="Texture" id=7]
 
 [node name="Cargo" type="Node2D"]
 
@@ -14,6 +15,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 startPos = -40
 endPos = 100
+sound = false
 
 [node name="Timer" type="Timer" parent="." index="0"]
 
@@ -22,29 +24,37 @@ wait_time = 0.1
 one_shot = false
 autostart = false
 
-[node name="Node_Cargo" type="Node2D" parent="." index="1"]
+[node name="Audio" type="AudioStreamPlayer" parent="." index="1"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Node_Cargo" type="Node2D" parent="." index="2"]
 
 scale = Vector2( 0.5, 0.5 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Halo_0" type="Sprite" parent="Node_Cargo" index="0"]
 
 visible = false
 position = Vector2( 622.113, 1829.32 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Visibility" ]
 
 [node name="Sprite0" type="Sprite" parent="Node_Cargo" index="1"]
 
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform", "Visibility" ]
 
 [node name="Sprite1" type="Sprite" parent="Node_Cargo" index="2"]
 
 position = Vector2( 885, 349 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 centered = false
 _sections_unfolded = [ "Offset", "Transform" ]
 
@@ -53,14 +63,14 @@ _sections_unfolded = [ "Offset", "Transform" ]
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 630.52, 682.295 )
 scale = Vector2( 1.05, 1.3 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Barre_0" type="Sprite" parent="Node_Cargo" index="4"]
 
 self_modulate = Color( 1, 1, 0, 1 )
 position = Vector2( 630.52, 682.295 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]

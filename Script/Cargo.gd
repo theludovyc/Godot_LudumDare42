@@ -5,11 +5,16 @@ signal teleported
 export(int) var startPos=0
 export(int) var endPos=100
 
+export(bool) var sound=false
+
 var onTeleport=false
 
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
+	if sound:
+		$Audio.play()
+
 	pass
 
 func canVacuum():
@@ -21,6 +26,7 @@ func onTimer_timeout():
 	if onTeleport:
 		if modulate.a>0:
 			modulate.a-=0.1
+			$Audio.volume_db-=2
 		else:
 			position.x=startPos
 			onTeleport=false
@@ -28,6 +34,7 @@ func onTimer_timeout():
 	else:
 		if modulate.a<1:
 			modulate.a+=0.1
+			$Audio.volume_db+=2
 		else:
 			$Timer.stop()
 

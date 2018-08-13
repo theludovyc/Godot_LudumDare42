@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Script/Game.gd" type="Script" id=1]
 [ext_resource path="res://Art/unknown.png" type="Texture" id=2]
 [ext_resource path="res://Prefab/Planete.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art/8bitOperatorPlus-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Prefab/Cargo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sound/SFX_Beep_01.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -17,6 +18,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
+sound = true
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
@@ -31,6 +33,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Label" type="Label" parent="." index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -50,6 +53,7 @@ max_lines_visible = -1
 
 [node name="Label2" type="Label" parent="." index="3"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -70,6 +74,7 @@ max_lines_visible = -1
 
 [node name="Label3" type="Label" parent="." index="4"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -90,6 +95,7 @@ max_lines_visible = -1
 
 [node name="Label4" type="Label" parent="." index="5"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -108,27 +114,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Label5" type="Label" parent="." index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 77.0
-margin_right = 117.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Score" type="Label" parent="." index="7"]
+[node name="Score" type="Label" parent="." index="6"]
 
 self_modulate = Color( 1, 0.501961, 0, 1 )
 anchor_left = 0.0
@@ -152,24 +138,33 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Margin", "Visibility" ]
 
-[node name="Timer" type="Timer" parent="." index="8"]
+[node name="Timer" type="Timer" parent="." index="7"]
 
 process_mode = 1
 wait_time = 0.25
 one_shot = false
 autostart = false
 
-[node name="Cargo" parent="." index="9" instance=ExtResource( 5 )]
+[node name="Cargo" parent="." index="8" instance=ExtResource( 5 )]
 
 position = Vector2( -40, 100 )
 endPos = 200
+sound = true
 
-[node name="Timer2" type="Timer" parent="." index="10"]
+[node name="Timer2" type="Timer" parent="." index="9"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = true
+
+[node name="Beep" type="AudioStreamPlayer" parent="." index="10"]
+
+stream = ExtResource( 6 )
+volume_db = -20.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]
 
