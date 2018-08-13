@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/SFX_Ship_Reactor_Loop_01.ogg-91284067322ac8786d25207cea8aab92.oggstr"
+
+[deps]
+
+source_file="res://Sound/SFX_Ship_Reactor_Loop_01.ogg"
+source_md5="1213061c80e6645f52149afac82d1688"
+
+dest_files=[ "res://.import/SFX_Ship_Reactor_Loop_01.ogg-91284067322ac8786d25207cea8aab92.oggstr" ]
+dest_md5="b0e64eae6acdef966bcc5e2ccde3c18c"
+
+[params]
+
+loop=true
+loop_offset=0

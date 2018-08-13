@@ -19,7 +19,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 [node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
-sound = true
+sound = false
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
@@ -178,7 +178,7 @@ bus = "Master"
 
 stream = ExtResource( 7 )
 volume_db = 0.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "Master"
 

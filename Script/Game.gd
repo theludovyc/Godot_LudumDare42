@@ -46,6 +46,9 @@ func _ready():
 	# Initialization here
 	$Label4.text=str(humans)
 	resetCargoBarre(0)
+
+	if sound:
+		$Music.play()
 	pass
 
 func checkWin():

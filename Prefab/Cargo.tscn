@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Script/Cargo.gd" type="Script" id=1]
-[ext_resource path="res://Sound/SFX_Ship_Reactor_Loop_01.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sound/SFX_Ship_Reactor_Loop_01.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Script/Node_Cargo.gd" type="Script" id=3]
 [ext_resource path="res://Art/Vaisseau/Hallo 02.png" type="Texture" id=4]
 [ext_resource path="res://Art/Vaisseau/Gauche.png" type="Texture" id=5]
@@ -9,6 +9,10 @@
 [ext_resource path="res://Art/Vaisseau/Droite0.png" type="Texture" id=7]
 [ext_resource path="res://Art/Vaisseau/Milieu0.png" type="Texture" id=8]
 [ext_resource path="res://Art/Vaisseau/Droite1.png" type="Texture" id=9]
+[ext_resource path="res://Art/Vaisseau/Milieu1.png" type="Texture" id=10]
+[ext_resource path="res://Art/Vaisseau/Droite2.png" type="Texture" id=11]
+[ext_resource path="res://Art/Vaisseau/Milieu2.png" type="Texture" id=12]
+[ext_resource path="res://Art/Vaisseau/Droite3.png" type="Texture" id=13]
 
 [node name="Cargo" type="Node2D"]
 
@@ -79,9 +83,9 @@ _sections_unfolded = [ "Offset", "Transform" ]
 
 visible = false
 self_modulate = Color( 0.784314, 0, 1, 1 )
-position = Vector2( 1130.11, 1829.32 )
+position = Vector2( 1130, 1829 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Milieu_0" type="Sprite" parent="Node_Cargo" index="6"]
 
@@ -94,16 +98,16 @@ _sections_unfolded = [ "Transform" ]
 
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 1130.52, 682.295 )
+position = Vector2( 1130, 682 )
 scale = Vector2( 1.05, 1.3 )
 texture = ExtResource( 6 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
 
 [node name="Barre_1" type="Sprite" parent="Node_Cargo" index="8"]
 
 visible = false
 self_modulate = Color( 0.784314, 0, 1, 1 )
-position = Vector2( 1130.52, 682.295 )
+position = Vector2( 1130, 682 )
 scale = Vector2( 1e-05, 1 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -113,6 +117,86 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 visible = false
 position = Vector2( 1625, 560.5 )
 texture = ExtResource( 9 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Halo_2" type="Sprite" parent="Node_Cargo" index="10"]
+
+visible = false
+self_modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 1546, 1829 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Milieu_1" type="Sprite" parent="Node_Cargo" index="11"]
+
+visible = false
+position = Vector2( 1573, 562 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Barre_02" type="Sprite" parent="Node_Cargo" index="12"]
+
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1546, 682 )
+scale = Vector2( 1.05, 1.3 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Barre_2" type="Sprite" parent="Node_Cargo" index="13"]
+
+visible = false
+self_modulate = Color( 0.784314, 0, 1, 1 )
+position = Vector2( 1546, 682 )
+scale = Vector2( 1e-05, 1 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Droite_2" type="Sprite" parent="Node_Cargo" index="14"]
+
+visible = false
+position = Vector2( 2044, 561 )
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Halo_3" type="Sprite" parent="Node_Cargo" index="15"]
+
+visible = false
+self_modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 1952, 1829 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Milieu_2" type="Sprite" parent="Node_Cargo" index="16"]
+
+visible = false
+position = Vector2( 2000, 562 )
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Barre_03" type="Sprite" parent="Node_Cargo" index="17"]
+
+visible = false
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1952, 682 )
+scale = Vector2( 1.05, 1.3 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Region", "Transform", "Visibility" ]
+
+[node name="Barre_3" type="Sprite" parent="Node_Cargo" index="18"]
+
+visible = false
+self_modulate = Color( 0.784314, 0, 1, 1 )
+position = Vector2( 1952, 682 )
+scale = Vector2( 1e-05, 1 )
+texture = ExtResource( 6 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Droite_3" type="Sprite" parent="Node_Cargo" index="19"]
+
+visible = false
+position = Vector2( 2468, 561.5 )
+texture = ExtResource( 13 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Timer" to="." method="onTimer_timeout"]

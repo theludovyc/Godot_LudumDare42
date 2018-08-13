@@ -10,7 +10,7 @@ export(bool) var sound=false
 
 var onTeleport=false
 
-var upgradeChance=0.1
+var upgradeChance=0.8
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -35,11 +35,11 @@ func onTimer_timeout():
 			modulate.a-=0.1
 			$Audio.volume_db-=2
 		else:
-			if global.level<2:
+			if global.level<3:
 				var r=randf()
 				if r<=upgradeChance:
 					upgrade()
-					upgradeChance=0.1
+					upgradeChance=0.8
 					emit_signal("upgraded")
 				else:
 					upgradeChance+=0.1
@@ -62,26 +62,17 @@ func _process(delta):
 		onTeleport=true
 	pass
 
-func setHalo0(var b):
-	$Node_Cargo.setVisibility_Halo0(b)
-
-func setHalo0Yellow():
-	$Node_Cargo.setColor_Halo0_Yellow()
-
-func setHalo0Red():
-	$Node_Cargo.setColor_Halo0_Red()
-
-func setHalo0White():
-	$Node_Cargo.setColor_Halo0_White()
-
 func setBarre0(var v):
 	$Node_Cargo.setScale_Barre0(v)
 
-func setHalo1(var b):
-	$Node_Cargo.setVisibility_Halo1(b)
-
 func setBarre1(var v):
 	$Node_Cargo.setScale_Barre1(v)
+
+func setBarre2(var v):
+	$Node_Cargo.setScale_Barre2(v)
+
+func setBarre3(var v):
+	$Node_Cargo.setScale_Barre3(v)
 
 func setHalo(i, b):
 	$Node_Cargo.setVisibility_Halo(i, b)

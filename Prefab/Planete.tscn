@@ -59,47 +59,55 @@ visible = false
 self_modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 972, 380 )
 scale = Vector2( 1.08, 1.5 )
+z_index = 1
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Barre_1" type="Sprite" parent="." index="5"]
 
 visible = false
 self_modulate = Color( 0.784314, 0, 1, 1 )
 position = Vector2( 972, 380 )
+z_index = 2
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Sprite4" type="Sprite" parent="." index="6"]
 
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 960, 380 )
+position = Vector2( 1128, 380 )
 scale = Vector2( 1.08, 1.5 )
+z_index = 1
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Barre_2" type="Sprite" parent="." index="7"]
 
 visible = false
-position = Vector2( 960, 380 )
+self_modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 1128, 380 )
+z_index = 2
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Sprite5" type="Sprite" parent="." index="8"]
 
 visible = false
 self_modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 1280, 380 )
+position = Vector2( 1300, 380 )
 scale = Vector2( 1.08, 1.5 )
+z_index = 1
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Barre_3" type="Sprite" parent="." index="9"]
 
 visible = false
-position = Vector2( 1280, 380 )
+self_modulate = Color( 0, 1, 1, 1 )
+position = Vector2( 1300, 380 )
+z_index = 2
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 
